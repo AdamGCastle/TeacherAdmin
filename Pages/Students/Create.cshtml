@@ -1,0 +1,59 @@
+﻿@page
+@model TeacherAdmin.Pages.Students.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Student</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Student.StudentName" class="control-label"></label>
+                <input asp-for="Student.StudentName" class="form-control" />
+                <span asp-validation-for="Student.StudentName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student.Age" class="control-label"></label>
+                <input asp-for="Student.Age" class="form-control" />
+                <span asp-validation-for="Student.Age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student.Info" class="control-label"></label>
+                <textarea asp-for="Student.Info" class="form-control" ></textarea>
+                <span asp-validation-for="Student.Info" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student.LessonsTaught" class="control-label"></label>
+                <input asp-for="Student.LessonsTaught" class="form-control" />
+                <span asp-validation-for="Student.LessonsTaught" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student.ItalkiName" class="control-label"></label>
+                <input asp-for="Student.ItalkiName" class="form-control" />
+                <span asp-validation-for="Student.ItalkiName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student.Platform" class="control-label"></label>
+                <input asp-for="Student.Platform" class="form-control" />
+                <span asp-validation-for="Student.Platform" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,55 @@
+﻿@page
+@model TeacherAdmin.Pages.LessonsReports.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>LessonBlog</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LessonBlog.Student.StudentName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LessonBlog.Student.StudentName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LessonBlog.SlidesUsed)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LessonBlog.SlidesUsed)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LessonBlog.Grammar)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LessonBlog.Grammar)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LessonBlog.Vocab)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LessonBlog.Vocab)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LessonBlog.NextLessonIdeas)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LessonBlog.NextLessonIdeas)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LessonBlog.TimeAndDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LessonBlog.TimeAndDate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.LessonBlog.ID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

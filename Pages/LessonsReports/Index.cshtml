@@ -1,0 +1,120 @@
+﻿@page
+@model TeacherAdmin.Pages.LessonsReports.IndexModel
+@{
+    ViewData["Title"] = "Lesson Reports";
+}
+
+<h1>Lesson Reports</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<br />
+<div><h2>Upcoming Lessons</h2></div>
+<br />
+<div class="d-flex bg-dark text-white">
+    <div class="p-2" style="flex:1 0 10%">
+        @Html.DisplayNameFor(model => model.CompletedLessons[0].Student.StudentName)
+    </div>
+    <div class="p-2" style="flex:1 0 15%">
+        @Html.DisplayNameFor(model => model.CompletedLessons[0].SlidesUsed)
+    </div>
+    <div class="p-2" style="flex:1 0 25%">
+        @Html.DisplayNameFor(model => model.CompletedLessons[0].Grammar)
+    </div>
+    <div class="p-2" style="flex:1 0 20%">
+        @Html.DisplayNameFor(model => model.CompletedLessons[0].Vocab)
+    </div>
+    <div class="p-2" style="flex:1 0 20%">
+        @Html.DisplayNameFor(model => model.CompletedLessons[0].NextLessonIdeas)
+    </div>
+    <div class="p-2" style="flex:1 0 10%">
+    </div>
+</div>
+<br />
+@foreach (var item in Model.UpcomingLessons)
+{
+    <div style="background-color:#ffffff" class="d-flex border-left border-right border-bottom border-primary">
+        <div class="p-2" style="flex:1 0 10%">
+            <a asp-page="/Students/DetailsNew" asp-route-id="@item.Student.ID"><strong>@Html.DisplayFor(modelItem => item.Student.StudentName)</strong></a>
+            <span>@Html.DisplayFor(modelItem => item.TimeAndDate)</span>
+            @*@(item.Student.HasDiscount ? "" : "PREM";)*@
+        </div>
+        <div class="p-2" style="flex:1 0 15%">
+            @Html.DisplayFor(modelItem => item.SlidesUsed)
+        </div>
+        <div class="p-2" style="flex:1 0 25%">
+            @Html.DisplayFor(modelItem => item.Grammar)
+        </div>
+        <div class="p-2" style="flex:1 0 20%">
+            @Html.DisplayFor(modelItem => item.Vocab)
+        </div>
+        <div class="p-2" style="flex:1 0 20%">
+            @Html.DisplayFor(modelItem => item.NextLessonIdeas)
+        </div>
+        <div class="p-2" style="flex:1 0 10%">
+            <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+            <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+            <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+        </div>
+    </div>
+}
+<br />
+<div><h2>Completed Lessons</h2></div>
+<br />
+@if (Model.ReportIncomplete)
+{
+    <div class="d-flex bg-danger text-white">
+             You haven't filled in a lesson report for one of today's lessons. Don't forget!
+    </div>
+
+}
+
+<div class="d-flex bg-dark text-white">
+    <div class="p-2" style="flex:1 0 10%">
+        @Html.DisplayNameFor(model => model.CompletedLessons[0].Student.StudentName)
+    </div>
+    <div class="p-2" style="flex:1 0 15%">
+        @Html.DisplayNameFor(model => model.CompletedLessons[0].SlidesUsed)
+    </div>
+    <div class="p-2" style="flex:1 0 25%">
+        @Html.DisplayNameFor(model => model.CompletedLessons[0].Grammar)
+    </div>
+    <div class="p-2" style="flex:1 0 20%">
+        @Html.DisplayNameFor(model => model.CompletedLessons[0].Vocab)
+    </div>
+    <div class="p-2" style="flex:1 0 20%">
+        @Html.DisplayNameFor(model => model.CompletedLessons[0].NextLessonIdeas)
+    </div>
+    <div class="p-2" style="flex:1 0 10%">
+    </div>
+</div>
+
+
+@foreach (var item in Model.CompletedLessons)
+{
+    <div style="background-color:#ffffff" class="d-flex border-left border-right border-bottom border-primary">
+        <div class="p-2" style="flex:1 0 10%">
+            <a asp-page="/Students/DetailsNew" asp-route-id="@item.Student.ID"><strong>@Html.DisplayFor(modelItem => item.Student.StudentName)</strong></a>
+            <span>@Html.DisplayFor(modelItem => item.TimeAndDate)</span>
+        </div>
+        <div class="p-2" style="flex:1 0 15%">
+            @Html.DisplayFor(modelItem => item.SlidesUsed)
+        </div>
+        <div class="p-2" style="flex:1 0 25%">
+            @Html.DisplayFor(modelItem => item.Grammar)
+        </div>
+        <div class="p-2" style="flex:1 0 20%">
+            @Html.DisplayFor(modelItem => item.Vocab)
+        </div>
+        <div class="p-2" style="flex:1 0 20%">
+            @Html.DisplayFor(modelItem => item.NextLessonIdeas)
+        </div>
+
+        <div class="p-2" style="flex:1 0 10%">
+            <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+            <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+            <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+        </div>
+    </div>
+}

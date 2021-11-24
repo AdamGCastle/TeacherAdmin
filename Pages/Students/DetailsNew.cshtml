@@ -1,0 +1,208 @@
+﻿@page
+@model TeacherAdmin.Pages.Students.DetailsNewModel
+@{
+    ViewData["Title"] = Model.Student.StudentName;
+}
+<div class="container">
+    <div class="main-body">       
+
+        <div class="row gutters-sm mt-4">
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <img src=@Model.ImgSource class="rounded-circle" width="150" />
+                            <div class="mt-3">
+                                <h1><strong>@Html.DisplayFor(model => model.Student.StudentName)</strong></h1>
+                                <p class="text-secondary mb-1"><strong>Age: </strong>@Html.DisplayFor(model => model.Student.Age)</p>
+                                <p class="text-secondary mb-1">Italki Username: <strong>@Html.DisplayFor(model => model.Student.ItalkiName)</strong></p>
+                                @*<p class="text-muted font-size-sm">@Html.DisplayFor(model => model.Student.Course)</p>*@
+                                <p class="text-secondary mb-1">Platform: <strong>@Html.DisplayFor(model => model.Student.Platform)</strong></p>
+                                <a asp-page="./Edit" asp-route-id="@Model.Student.ID" button class="btn btn-primary">Edit</a>
+                                <a asp-page="/LessonsReports/Create" asp-route-id="@Model.Student.ID" button class="btn btn-outline-primary">New Lesson Report</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                <h6 class="mb-0">@Html.DisplayNameFor(model => model.Student.Info)</h6>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                <span class="text-secondary">@Html.DisplayFor(model => model.Student.Info)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card mt-3">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                            <h6 class="mb-0">SlidesUsed</h6>
+                        </li>
+                        @foreach (var item in Model.Reports)
+                        {
+                            if (item.SlidesUsed != null)
+                            {
+                                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                    <span class="text-secondary">@item.TimeAndDate.ToShortDateString() - @item.SlidesUsed</span>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </div>
+                <div class="card mt-3">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                            <h6 class="mb-0">Grammar</h6>
+                        </li>
+                        @foreach (var item in Model.Reports)
+                        {
+                            if (item.Grammar != null)
+                            {
+                                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                    <span class="text-secondary">@item.TimeAndDate.ToShortDateString() - @item.Grammar</span>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </div>
+                <div class="card mt-3">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                            <h6 class="mb-0">Vocab</h6>
+                        </li>
+                        @foreach (var item in Model.Reports)
+                        {
+                            if (item.Vocab != null)
+                            {
+                                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                    <span class="text-secondary">@item.TimeAndDate.ToShortDateString() - @item.Vocab</span>
+                                </li>
+                            }
+                        }
+
+                    </ul>
+                </div>
+
+            </div>
+
+            @if (Model.Reports.Any())
+            {
+                <div class="col-8">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <a asp-page="/LessonsReports/Edit" asp-route-id="@Model.Reports[0].ID" button class="btn btn-primary">Edit</a>
+                                </div>
+                                <div class="col-sm-9">
+                                    <h2>Last Lesson</h2>
+                                    <h5>@Model.Reports[0].TimeAndDate.ToString("ddd, d MMMM h:mm tt")</h5>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">@Html.DisplayNameFor(model => model.Reports[0].SlidesUsed)</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    @Html.DisplayFor(model => model.Reports[0].SlidesUsed)
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">@Html.DisplayNameFor(model => model.Reports[0].Grammar)</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    @Html.DisplayFor(model => model.Reports[0].Grammar)
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">@Html.DisplayNameFor(model => model.Reports[0].Vocab)</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    @Html.DisplayFor(model => model.Reports[0].Vocab)
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row" style="background-color: darkgrey; color: white ">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">@Html.DisplayNameFor(model => model.Reports[0].NextLessonIdeas)</h6>
+                                </div>
+                                <div class="col-sm-9">
+                                    @Html.DisplayFor(model => model.Reports[0].NextLessonIdeas)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @for (int i = 1; i < Model.Reports.Count; i++)
+                    {
+
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <a asp-page="C:\Users\adam_\source\repos\TeacherAdmin\Pages\LessonsReports\Edit.cshtml" asp-route-id="@Model.Reports[i].ID" button class="btn btn-primary">Edit</a>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <h6 class="mb-0"></h6> - <h4>@Model.Reports[i].TimeAndDate.ToString("ddd, d MMMM h:mm tt")</h4>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">@Html.DisplayNameFor(model => model.Reports[i].SlidesUsed)</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        @Html.DisplayFor(model => model.Reports[i].SlidesUsed)
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">@Html.DisplayNameFor(model => model.Reports[i].Grammar)</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        @Html.DisplayFor(model => model.Reports[i].Grammar)
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">@Html.DisplayNameFor(model => model.Reports[i].Vocab)</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        @Html.DisplayFor(model => model.Reports[i].Vocab)
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">@Html.DisplayNameFor(model => model.Reports[i].NextLessonIdeas)</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        @Html.DisplayFor(model => model.Reports[i].NextLessonIdeas)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+            }
+
+
+
+        </div>
+            @*@Model.ImgSource*@
+     </div>
+
+</div>
+
+

@@ -1,0 +1,68 @@
+﻿@page
+@model TeacherAdmin.Pages.LessonsReports.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>LessonBlog</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="LessonBlog.ID" />
+            <div class="form-group d-flex">
+                <label asp-for="LessonBlog.StudentID" class="p-2 text-right" style="flex:0 0 15%"></label>
+                <div style="flex:1 0 auto;width:auto">
+                    <select asp-for="LessonBlog.StudentID" asp-items="Model.Students" class="form-control"></select>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="LessonBlog.SlidesUsed" class="control-label"></label>
+                <textarea asp-for="LessonBlog.SlidesUsed" class="form-control"></textarea>
+                <span asp-validation-for="LessonBlog.SlidesUsed" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LessonBlog.Grammar" class="control-label"></label>
+                <textarea asp-for="LessonBlog.Grammar" class="form-control"></textarea>
+                <span asp-validation-for="LessonBlog.Grammar" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LessonBlog.Vocab" class="control-label"></label>
+                <textarea asp-for="LessonBlog.Vocab" class="form-control"></textarea>
+                <span asp-validation-for="LessonBlog.Vocab" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LessonBlog.NextLessonIdeas" class="control-label"></label>
+                <textarea asp-for="LessonBlog.NextLessonIdeas" class="form-control"></textarea>
+                <span asp-validation-for="LessonBlog.NextLessonIdeas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LessonBlog.TimeAndDate"></label>
+                @*<input type="datetime" asp-for="LessonBlog.TimeAndDate" class="form-control" />*@
+                <div class="form-control">@Html.TextBoxFor(model => model.LessonBlog.TimeAndDate, new { @id = "lessontime", @Value = Model.LessonBlog.TimeAndDate.ToString("MM/dd/yyyy HH:mm") })</div>
+                <span asp-validation-for="LessonBlog.TimeAndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+
+<script>
+    $('#lessontime').datepicker();
+</script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
