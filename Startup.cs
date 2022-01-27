@@ -27,7 +27,7 @@ namespace TeacherAdmin
         {
             services.AddRazorPages();
             services.AddDbContext<ItalkiDatabaseContext>(options =>
-                     options.UseSqlServer(Configuration.GetConnectionString("ItalkiDatabaseContext")));
+                     options.UseSqlServer(Configuration.GetConnectionString("acbasic")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
