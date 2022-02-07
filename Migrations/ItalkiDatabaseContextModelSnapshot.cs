@@ -73,9 +73,6 @@ namespace TeacherAdmin.Migrations
                     b.Property<bool>("IsCurrent")
                         .HasColumnType("bit");
 
-                    b.Property<string>("ItalkiName")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("LessonsTaught")
                         .HasColumnType("int");
 
@@ -89,6 +86,9 @@ namespace TeacherAdmin.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StudentName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");

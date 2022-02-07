@@ -15,7 +15,7 @@
                             <div class="mt-3">
                                 <h1><strong>@Html.DisplayFor(model => model.Student.StudentName)</strong></h1>
                                 <p class="text-secondary mb-1"><strong>Age: </strong>@Html.DisplayFor(model => model.Student.Age)</p>
-                                <p class="text-secondary mb-1">Italki Username: <strong>@Html.DisplayFor(model => model.Student.ItalkiName)</strong></p>
+                                <p class="text-secondary mb-1">Italki UserName: <strong>@Html.DisplayFor(model => model.Student.UserName)</strong></p>
                                 @*<p class="text-muted font-size-sm">@Html.DisplayFor(model => model.Student.Course)</p>*@
                                 <p class="text-secondary mb-1">Platform: <strong>@Html.DisplayFor(model => model.Student.Platform)</strong></p>
                                 <a asp-page="./Edit" asp-route-id="@Model.Student.ID" button class="btn btn-primary">Edit</a>

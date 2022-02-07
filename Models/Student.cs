@@ -26,8 +26,8 @@ namespace TeacherAdmin.Models
         [Display(Name = "Lessons Completed")]
         public int LessonsTaught { get; set; } = 0;
 
-        [Display(Name = "Italki UserName")]
-        public string ItalkiName { get; set; }
+        [Display(Name = "Username")]
+        public string UserName { get; set; }
 
         [Display(Name = "Picture Source")]
         public string PicSource { get; set; }
